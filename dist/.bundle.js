@@ -1,0 +1,1 @@
+(()=>{"use strict";document.getElementById("login"),document.getElementById("password"),document.getElementById("deviceID"),document.querySelector("button"),document.getElementById("wrapForm")})();

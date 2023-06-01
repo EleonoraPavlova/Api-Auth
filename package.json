@@ -1,0 +1,22 @@
+{
+  "name": "elenpavlova",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV='production' webpack",
+    "start": "webpack serve",
+    "mode": "process.env.NODE_ENV === 'development'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.1",
+    "webpack": "^5.79.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-define-config": "^0.0.1",
+    "webpack-dev-server": "^4.13.3"
+  }
+}

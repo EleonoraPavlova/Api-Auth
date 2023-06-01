@@ -1,0 +1,59 @@
+
+1. Проверить, что messages all заработает и без токена.
+
+2. Сделать форму входа, отправить запрос на login:
+	
+	login: ваш токен из прошлого ДЗ //0962595e6228091f828d1b9c7c0e4d0a
+	password: 12345
+	deviceID: любая строка, пригодится в ДЗ №7 //bDXXhUrKdkoRpULsUysCLb
+	
+	Сохранить accessToken в localStorage. Токен валиден 2 минуты.
+	
+3. При заходе на страницу сделать запрос на check, передавая accessToken:
+	
+	если 401, показываем форму входа, 
+	если 200 - приветствуем пользователя, имя можно найти внутри токена
+	
+4. Добавить 2-3 сообщения, сделав функцию messages add. Не обязательно с формы, можно прямо из кода.
+	
+-----------------------------------------------------------------------------------
+
+Адрес API: http://faceprog.ru/js-final-api
+
+CORS запросы разрешены с 
+	http://localhost:5173
+	http://127.0.0.1:5173
+	http://localhost:5500
+	http://127.0.0.1:5500
+	
+-----------------------------------------------------------------------------------
+
+auth/
+	!!!POST login.php 
+		request:
+			body: formData { login, password, deviceID }
+		response: 
+			{res: false, errors: []}
+			{res: true, accessToken: string}, setCookie: refreshToken
+	
+	!!!GET check.php
+		request:
+			headers.Authorization: `Bearer ${accessToken}`
+		response: 
+			200 {res: true}
+			401
+		
+	PUT refresh/refresh.php - выключен, заработает в следующем ДЗ
+	
+!!!GET messages.php 
+	request: 
+	response: 
+		200 Array of msgObects or HTTP CODE 401
+	
+!!!POST messages.php
+	request
+		headers.Authorization: `Bearer ${accessToken}`
+		body: formData { text }
+	response: 
+		200 msgObect
+		422 errorsArray
